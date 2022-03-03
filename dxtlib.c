@@ -1,5 +1,6 @@
-#include "lib/define.h" 
+#include "lib/define.h"
 
+// this function for test, dont use it
 void readstr(char * string) {
   scanf("%s", string);
   printf("STR: %s\nADRS: %p\n", string, string);
@@ -32,11 +33,18 @@ void wrt_file(char * dat, char * filename) {
   fclose(file);
 }
 
-void rd_file(char * filename) {
-  char dat[500];
-  printf("%s\n%s\n", filename, dat);
-  FILE *file = fopen(filename, "r");
-    //fgets(dat, 255, file);
-    //printf("%s\n", dat);
-  fclose(file);
+void rd_file(char * filename, char * file_str) {
+  int c;
+  int idx = 0;
+  FILE *file;
+  printf("filename: %s\n", filename);
+  file = fopen(filename, "r");
+  if (file) {
+    while ((c = getc(file)) != EOF) {
+      file_str[idx] = c;
+      idx++;
+    }
+    fclose(file);
+  }
+  printf("filedat: %s\n", file_str);
 }

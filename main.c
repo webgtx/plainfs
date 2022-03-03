@@ -16,12 +16,12 @@ int main() {
   SLINE("Write the file");
   printf("filename: ");
   lnrd(filename);
-  printf("Done !\nNow you can write text into this file");
+  printf("Done !\nNow you can write text into this file: ");
   lnrd(dat);
   printf("filename = %s\ndat = %s\n", filename, dat);
   wrt_file(dat, filename);
   SLINE("And after you will read this file");
-  // rd_file(dat, filename); FIXME
+  rd_file(filename, dat);
 }
 
 void wrt_exmpl() {
