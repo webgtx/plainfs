@@ -1,5 +1,15 @@
 #include "lib/define.h"
 
+// This function is broken, stopwatcher always late on 1 seconds for iteration.
+void sleep(int timeout) { // FIXME
+  int idx = 0;
+  printf("sleep was started...\n");
+  int time_bp = time(NULL) + timeout;
+  while (time_bp >= time(NULL)) {
+    printf("%is timeout: %i\n", idx, time(NULL));
+    idx++;
+  }
+}
 // this function for test, dont use it
 void readstr(char * string) {
   scanf("%s", string);
@@ -48,3 +58,4 @@ void rd_file(char * filename, char * file_str) {
   }
   printf("filedat: %s\n", file_str);
 }
+

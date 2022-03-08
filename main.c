@@ -1,16 +1,35 @@
 #include "lib/define.h" 
+#include "lib/functions.h"
+
 #define ASIZE 500
 #define SLINE(title) printf("\n---[ %s ]---\n", title)
 #define SRES(name, result) printf("%s: %s\n", name, result)
 
-void matrix();
-void readstr();
-void lnrd();
-void wrt_exmpl();
-void wrt_file();
-void rd_file();
-
 int main() {
+  SLINE("TUI DEMO");
+  printf("\ns - sleep 5 seconds\nt - current unixstamp\nPress something: ");
+  while (true) {
+    switch (getchar()) {
+      case 'w':
+        printf("00\n");
+        break;
+      case 's':
+        sleep(5);
+        printf("Done!\n");
+        break;
+      case 't':
+        printf("unixstamp: %i\n", time(NULL));
+      case '\n':
+        putchar('\n');
+        break;
+      default:
+        printf("| Demo is missing\n");
+        break;
+    }
+  }
+}
+
+void fs_exmpl() {
   char dat[ASIZE];
   char filename[ASIZE];
   SLINE("Write the file");
@@ -30,20 +49,4 @@ void wrt_exmpl() {
   readstr(str);
   SLINE("STDOUT");
   printf("STR: %s\nADRS: %p\n", str, &str);
-}
-
-void fwrt_exmpl() {
-  char strg[ASIZE];
-  char filename[ASIZE];
-  SLINE("Write the file");
-  printf("filename: ");
-  lnrd(filename);
-  printf("Done !\nNow you can write text into this file");
-  for (int i = ASIZE; i <= 0; i++) {
-    strg[i] = '\0';
-  }
-  lnrd(strg);
-  wrt_file(strg, filename);
-  SLINE("And after you will read this file");
-  rd_file(strg, filename);
 }
