@@ -6,27 +6,8 @@
 #define SRES(name, result) printf("%s: %s\n", name, result)
 
 int main() {
-  SLINE("TUI DEMO");
-  printf("\ns - sleep 5 seconds\nt - current unixstamp\nPress something: ");
-  while (true) {
-    switch (getchar()) {
-      case 'w':
-        printf("00\n");
-        break;
-      case 's':
-        sleep(5);
-        printf("Done!\n");
-        break;
-      case 't':
-        printf("unixstamp: %i\n", time(NULL));
-      case '\n':
-        putchar('\n');
-        break;
-      default:
-        printf("| Demo is missing\n");
-        break;
-    }
-  }
+  pgrd();
+  return 0;
 }
 
 void fs_exmpl() {
@@ -49,4 +30,28 @@ void wrt_exmpl() {
   readstr(str);
   SLINE("STDOUT");
   printf("STR: %s\nADRS: %p\n", str, &str);
+}
+
+void tui_exmpl() {
+  SLINE("TUI DEMO");
+  printf("\ns - sleep 5 seconds\nt - current unixstamp\nPress something: ");
+  while (true) {
+    switch (getchar()) {
+      case 'w':
+        printf("00\n");
+        break;
+      case 's':
+        sleep(5);
+        printf("Done!\n");
+        break;
+      case 't':
+        printf("unixstamp: %i\n", time(NULL));
+      case '\n':
+        putchar('\n');
+        break;
+      default:
+        printf("| Demo is missing\n");
+        break;
+    }
+  }
 }

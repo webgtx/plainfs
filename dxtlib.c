@@ -1,5 +1,11 @@
 #include "lib/define.h"
 
+void pgrd() {
+  int arr[5] = {3, 5, 4, 7}, idx;
+  for (idx = 0; idx < 5; idx++)
+    printf("item addr: %i | %p \n", *(arr + idx),arr + idx);
+}
+
 // This function is broken, stopwatcher always late on 1 seconds for iteration.
 void sleep(int timeout) { // FIXME
   int idx = 0;
