@@ -1,9 +1,22 @@
 #include "lib/define.h"
 
-void pgrd() {
-  int arr[5] = {3, 5, 4, 7}, idx;
-  for (idx = 0; idx < 5; idx++)
-    printf("item addr: %i | %p \n", *(arr + idx),arr + idx);
+void lnrd(char * str) {
+  int idx = 0;
+  while (true) {
+    char ch = getchar();
+    if (ch == '\n') 
+      break;
+    str[idx] = ch;
+    idx++;
+  }
+  str[idx++] = '\0';
+}
+
+// Only INT, don't trying use arrays with char
+void foreach(int *arr, int len, void (*callback) (int item, int idx)) {
+  unsigned idx = 0;
+  for (idx; idx < len; idx++) 
+    callback(arr[idx], idx);
 }
 
 // This function is broken, stopwatcher always late on 1 seconds for iteration.
@@ -31,17 +44,6 @@ void matrix() {
   printf("\tsizeof arr = %i bytes\n", sizeof(mtx));
 }
 
-void lnrd(char * str) {
-  int idx = 0;
-  while (true) {
-    char ch = getchar();
-    if (ch == '\n') 
-      break;
-    str[idx] = ch;
-    idx++;
-  }
-  str[idx++] = '\0';
-}
 
 void wrt_file(char * dat, char * filename) { 
   FILE *file = fopen(filename, "w");

@@ -6,7 +6,12 @@
 #define SRES(name, result) printf("%s: %s\n", name, result)
 
 int main() {
-  pgrd();
+  int arr[] = {1, 3, 5, 6};
+  int arr_len = sizeof arr / sizeof arr[0];
+  void cb (int n, int idx) {
+    printf("cb: %-3i:%2i\n", n, idx);
+  }
+  foreach(arr, arr_len, cb);
   return 0;
 }
 

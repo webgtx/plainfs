@@ -1,10 +1,10 @@
 void matrix();
 void readstr();
 void lnrd();
-void pgrd();
 void wrt_exmpl();
 void tui_exmpl();
 void wrt_file();
 void fs_exmpl();
 void rd_file();
 void sleep();
+void foreach();
