@@ -6,12 +6,7 @@
 #define SRES(name, result) printf("%s: %s\n", name, result)
 
 int main() {
-  int arr[] = {1, 3, 5, 6};
-  int arr_len = sizeof arr / sizeof arr[0];
-  void cb (int n, int idx) {
-    printf("cb: %-3i:%2i\n", n, idx);
-  }
-  foreach(arr, arr_len, cb);
+  dxshell_exmpl();
   return 0;
 }
 
@@ -37,26 +32,32 @@ void wrt_exmpl() {
   printf("STR: %s\nADRS: %p\n", str, &str);
 }
 
-void tui_exmpl() {
-  SLINE("TUI DEMO");
-  printf("\ns - sleep 5 seconds\nt - current unixstamp\nPress something: ");
+int dxshell_exmpl() {
+  SLINE("DXSHELL DEMO");
+  printf("\nsleep - sleep 5 seconds\nutime - current unixstamp\nwho - current user\nexit - exit from shell\n");
   while (true) {
-    switch (getchar()) {
-      case 'w':
-        printf("00\n");
-        break;
-      case 's':
-        sleep(5);
-        printf("Done!\n");
-        break;
-      case 't':
-        printf("unixstamp: %i\n", time(NULL));
-      case '\n':
-        putchar('\n');
-        break;
-      default:
-        printf("| Demo is missing\n");
-        break;
-    }
+    char str[ASIZE];
+    char options[4][ASIZE] = {{"sleep"}, {"who"}, {"utime"}, {"exit"}};
+    unsigned idx;
+    unsigned a_len = sizeof options / sizeof options[0];
+    printf("dxshell$: ");lnrd(str);
+    for (idx = 0; idx < a_len; idx++) {
+      int is_same = strcmp(options[idx], str);
+      if (is_same == 0) 
+      switch (idx) {
+        case 0:
+          sleep(5);
+          break;;
+        case 1:
+          system("whoami");
+          break;;
+        case 2:
+          printf("now is: %li\n", time(NULL));
+          break;;
+        case 3:
+          SLINE("BYE BYE ;)");
+          return 0; 
+      }
+    } 
   }
 }
