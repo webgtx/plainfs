@@ -6,7 +6,12 @@
 #define SRES(name, result) printf("%s: %s\n", name, result)
 
 int main() {
-  dxshell_exmpl();
+  int arr[] = {'a', 'y', 'o', ',', 'w', 'h', 't', 's', 'u', 'p'};
+  void cb(int item, int idx) {
+    printf("%c - %i\n", item, idx);
+  }
+  foreach(arr, sizeof arr / sizeof arr[0], *cb);
+  // dxshell_exmpl();
   return 0;
 }
 

@@ -29,6 +29,7 @@ void sleep(int timeout) { // FIXME
     idx++;
   }
 }
+
 // this function for test, dont use it
 void readstr(char * string) {
   scanf("%s", string);
@@ -43,7 +44,6 @@ void matrix() {
   }
   printf("\tsizeof arr = %i bytes\n", sizeof(mtx));
 }
-
 
 void wrt_file(char * dat, char * filename) { 
   FILE *file = fopen(filename, "w");
