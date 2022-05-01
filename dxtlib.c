@@ -17,7 +17,18 @@ void fs_exmpl();
 void rd_file();
 void sleep();
 void foreach();
+int sint(const char *str);
 int system(const char *shell);
+
+
+// SINT - StringInteger, sum of all chars converted to int
+int sint(const char * str) {
+  unsigned len = strlen(str);
+  int sint = 0;
+  for (unsigned idx; idx < len; idx++)
+    sint += str[idx];
+  return sint;
+}
 
 void lnrd(char * str) {
   int idx = 0;
