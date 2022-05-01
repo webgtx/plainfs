@@ -1,5 +1,6 @@
-#include "lib/define.h" 
-#include "lib/functions.h"
+#include "dxtlib.c"
+
+int dxshell_exmpl();
 
 #define ASIZE 500
 #define SLINE(title) printf("\n---[ %s ]---\n", title)
@@ -11,7 +12,7 @@ int main() {
     printf("%c - %i\n", item, idx);
   }
   foreach(arr, sizeof arr / sizeof arr[0], *cb);
-  // dxshell_exmpl();
+  dxshell_exmpl();
   return 0;
 }
 

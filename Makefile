@@ -1,4 +1,4 @@
 build: 
-	gcc main.c dxtlib.c -o x
+	gcc main.c -o x
 run:
 	./x

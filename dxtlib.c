@@ -1,4 +1,23 @@
-#include "lib/define.h"
+// webgtx @ 2022
+// https://github.com/webgtx
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+#include <ctype.h>
+
+void matrix();
+void readstr();
+void lnrd();
+void wrt_exmpl();
+void wrt_file();
+void fs_exmpl();
+void rd_file();
+void sleep();
+void foreach();
+int system(const char *shell);
 
 void lnrd(char * str) {
   int idx = 0;
