@@ -85,7 +85,6 @@ void rd_file(char * filename, char * file_str) {
   int c;
   int idx = 0;
   FILE *file;
-  printf("filename: %s\n", filename);
   file = fopen(filename, "r");
   if (file) {
     while ((c = getc(file)) != EOF) {
@@ -94,6 +93,5 @@ void rd_file(char * filename, char * file_str) {
     }
     fclose(file);
   }
-  printf("filedat: %s\n", file_str);
 }
 
