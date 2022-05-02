@@ -25,7 +25,7 @@ int system(const char *shell);
 int sint(const char * str) {
   unsigned len = strlen(str);
   int sint = 0;
-  for (unsigned idx; idx < len; idx++)
+  for (unsigned idx = 0; idx < len; idx++)
     sint += str[idx];
   return sint;
 }
