@@ -1,5 +1,6 @@
-// webgtx @ 2022
-// https://github.com/webgtx
+// Author: webgtx @ 2022
+// Github: https://github.com/webgtx/dxtlib
+// Version: Development Testing 2.19
 
 #include <stdio.h>
 #include <stdbool.h>
@@ -81,14 +82,14 @@ void wrt_file(char * dat, char * filename) {
   fclose(file);
 }
 
-void rd_file(char * filename, char * file_str) {
+void rd_file(char * dat, char * filename) {
   int c;
   int idx = 0;
   FILE *file;
   file = fopen(filename, "r");
   if (file) {
     while ((c = getc(file)) != EOF) {
-      file_str[idx] = c;
+      dat[idx] = c;
       idx++;
     }
     fclose(file);
