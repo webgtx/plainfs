@@ -1,6 +1,8 @@
 #include "dxtlib.c"
+#include <unistd.h>
 
 int dxshell_exmpl();
+void fs_exmpl();
 
 #define ASIZE 500
 #define SLINE(title) printf("\n---[ %s ]---\n", title)
@@ -11,7 +13,6 @@ int main() {
   void cb(int item, int idx) {
     printf("%c - %i\n", item, idx);
   }
-  foreach(arr, sizeof arr / sizeof arr[0], *cb);
   dxshell_exmpl();
   return 0;
 }
@@ -30,23 +31,15 @@ void fs_exmpl() {
   rd_file(filename, dat);
 }
 
-void wrt_exmpl() {
-  char str[ASIZE] = "Cool String";
-  SLINE("READSTR");
-  readstr(str);
-  SLINE("STDOUT");
-  printf("STR: %s\nADRS: %p\n", str, &str);
-}
-
 int dxshell_exmpl() {
   SLINE("DXSHELL DEMO");
-  printf("\nsleep - sleep 5 seconds\nutime - current unixstamp\nwho - current user\nexit - exit from shell\n");
+  printf("\n  who - shows your username\n  utime - check unix time\n  exit - exit from shell\n");
   while (true) {
     char str[ASIZE];
-    char options[4][ASIZE] = {{"sleep"}, {"who"}, {"utime"}, {"exit"}};
+    char options[5][ASIZE] = {{"sleep"}, {"who"}, {"utime"}, {"exit"}, {"help"}};
     unsigned idx;
     unsigned a_len = sizeof options / sizeof options[0];
-    printf("dxshell$: ");lnrd(str);
+    printf("\ndxshell$: ");lnrd(str);
     for (idx = 0; idx < a_len; idx++) {
       int is_same = strcmp(options[idx], str);
       if (is_same == 0) 
@@ -63,6 +56,9 @@ int dxshell_exmpl() {
         case 3:
           SLINE("BYE BYE ;)");
           return 0; 
+        case 4:
+          printf("\n  who - shows your username\n  utime - check unix time\n  exit - exit from shell\n");
+          break;; 
       }
     } 
   }

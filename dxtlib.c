@@ -9,15 +9,9 @@
 #include <string.h>
 #include <ctype.h>
 
-void matrix();
-void readstr();
 void lnrd();
-void wrt_exmpl();
 void wrt_file();
-void fs_exmpl();
 void rd_file();
-void sleep();
-void foreach();
 int sint(const char *str);
 int system(const char *shell);
 
@@ -62,4 +56,3 @@ void rd_file(char * dat, char * filename) {
     fclose(file);
   }
 }
-
