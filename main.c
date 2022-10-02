@@ -1,5 +1,6 @@
-#include "dxtlib.c"
+#include "plainfs.h"
 #include <unistd.h>
+#include <time.h>
 
 int dxshell_exmpl();
 void fs_exmpl();
@@ -7,6 +8,7 @@ void fs_exmpl();
 #define ASIZE 500
 #define SLINE(title) printf("\n---[ %s ]---\n", title)
 #define SRES(name, result) printf("%s: %s\n", name, result)
+#define HELPINFO() printf("\n  who - shows your username\n  utime - check unix time\n  exit - exit from shell\n  touch - create a file");
 
 int main() {
   int arr[] = {'a', 'y', 'o', ',', 'w', 'h', 't', 's', 'u', 'p'};
@@ -33,10 +35,11 @@ void fs_exmpl() {
 
 int dxshell_exmpl() {
   SLINE("DXSHELL DEMO");
-  printf("\n  who - shows your username\n  utime - check unix time\n  exit - exit from shell\n");
+  HELPINFO();
+  // printf("\n  who - shows your username\n  utime - check unix time\n  exit - exit from shell\n");
   while (true) {
     char str[ASIZE];
-    char options[5][ASIZE] = {{"sleep"}, {"who"}, {"utime"}, {"exit"}, {"help"}};
+    char options[6][ASIZE] = {{"sleep"}, {"who"}, {"utime"}, {"exit"}, {"help"}, {"touch"}};
     unsigned idx;
     unsigned a_len = sizeof options / sizeof options[0];
     printf("\ndxshell$: ");lnrd(str);
@@ -57,8 +60,15 @@ int dxshell_exmpl() {
           SLINE("BYE BYE ;)");
           return 0; 
         case 4:
-          printf("\n  who - shows your username\n  utime - check unix time\n  exit - exit from shell\n");
+          HELPINFO();
           break;; 
+        case 5:
+          char filename[100];
+          printf("%s", "Filename");
+          lnrd(filename);
+          wrt_file("This file was generated with DXT library\n", filename);
+          printf("File %s was successfully created\n", filename);
+          break;;
       }
     } 
   }
